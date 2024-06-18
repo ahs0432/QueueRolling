@@ -15,7 +15,7 @@ import (
 )
 
 const host = "IPIPIPIP"
-const proxyURL = "DOMAIN"
+const proxyDomain = "DOMAIN"
 const userQueue = "userQueue"
 const userCount = "userCount"
 const lastScore = "lastScore"
@@ -108,7 +108,7 @@ func main() {
 
 		c.Request().Header.Add("X-Forwarded-For", c.IP())
 		//fmt.Println(c.IP(), c.IPs())
-		proxtURL := strings.Replace(c.Request().URI().String(), c.BaseURL(), proxyURL, 1)
+		proxtURL := strings.Replace(c.Request().URI().String(), c.BaseURL(), proxyDomain, 1)
 		return proxy.Do(c, proxtURL)
 	})
 	app.Listen(":80")
